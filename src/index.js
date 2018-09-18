@@ -27,7 +27,7 @@ class Sorter {
   }
 
   sort(indices) {
-
+    /*
     var startIndex = Math.min.apply(Math,indices);
 
     var tempArray = [];
@@ -43,7 +43,24 @@ class Sorter {
       this.array[i + startIndex] = tempArray[i];
     }
 
-    console.log(this.array);
+    console.log(this.array);*/
+
+    var tempArray = [];
+
+    for(let i = 0; i < indices.length; i++){
+      tempArray[i] = this.array[indices[i]];
+    }
+
+    tempArray.sort(this.comparator);
+
+    indices.sort(function (a, b) {
+      return a - b;
+    });
+
+    for(let i = 0; i <indices.length; i++){
+      this.array[indices[i]] = tempArray[i];
+    }
+
   }
 
   setComparator(compareFunction) {
